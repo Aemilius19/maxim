@@ -1,0 +1,40 @@
+﻿@{
+    int count = 0;
+}
+@model List<Services>
+
+<div class="container text-center">
+    <h2 class="mb-4">Team Section</h2>
+    <a class="btn btn-primary mb-4" asp-action="Create">Add Member</a>
+    <div class="center">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Service Name</th>
+                    <th scope="col">Service Description</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table content goes here -->
+                <!-- Example row -->
+                @foreach (var item in Model)
+                {
+                    count += 1;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td><img src="~/admin/upload/service/@item.ImgUrl" alt="John Doe"></td>
+                        <td>
+                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
